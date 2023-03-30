@@ -1,0 +1,289 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Weather Application</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+           
+            <p>Weather App</p>
+        </header>
+        <section class="input-part">
+            <p class="info-text">Please Enter Your City Name</p>
+            <input type="text" placeholder="Enter City Name Here" required spellcheck="false">
+            <div class="separator"></div>
+            <button>Get Device Location</button>
+        </section>
+        <section class="weather-part">
+            <img src="sunny_to_cloudy.svg" alt="Weather Icon">
+            <div class="temp">
+                <span class="numb">_</span>
+                <span class="deg">°</span>c
+            </div>
+            <div class="weather">_ _</div>
+            <div class="location">
+                <i class="uil uil-map"></i>
+                <span>_ _</span> <br>
+                <p></p>
+            </div>
+            <div class="bottom-details">
+                <div class="column feels">
+                    <i class="uil uil-thermometer"></i>
+                    <div class="details">
+                        <div class="temp">
+                            <span class="numb-2">_</span>
+                            <span class="deg">°</span>c
+                        </div>
+                        <p>Feels Like</p>
+                    </div>
+                </div>
+                <div class="column humidity">
+                    <i class="uil uil-tear"></i>
+                    <div class="details">
+                        <span class="numb">_</span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #939393;
+    }
+    .container{
+        width: 350px;
+        height: auto;
+        background: #fff;
+        border-radius: 10px;
+    }
+    .container.active header{
+        font-size: 30px;
+    }
+    .container header{
+        color: #43affc;
+        font-size: 21px;
+        font-weight: 500;
+        padding: 16px 15px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #bfbfbf;
+    }
+    header p{
+        cursor: pointer;
+        font-size: 30px;
+        margin-right: 0px;
+        margin-left: 60px;
+    }
+    .container .input-part{
+        margin: 20px 25px 30px;
+    }
+    .input-part :where(input,button){
+        width: 100%;
+        height: 50px;
+        border: none;
+        outline: none;
+        font-size: 18px;
+        border-radius: 7px;
+        text-align: center;
+    }
+    .input-part input{
+        border: 1px solid #bfbfbf;
+    }
+    .input-part input:focus,:valid{
+        border: 2px solid #43affc;
+    }
+    .input-part button{
+        color: #fff;
+        background: #43affc;
+        cursor: pointer;
+    }
+    .input-part .separator{
+        height: 1px;
+        width: 100%;
+        background: #ccc;
+        margin: 25px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .separator::before{
+        content: 'OR';
+        background: #fff;
+        padding: 0 15px;
+        color: #ccc;
+    }
+    .input-part .info-text{
+        display: none;
+        font-size: 17px;
+        text-align: center;
+        padding: 12px 10px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .info-text.error{
+        display: block;
+        color: #721c24;
+        background: #f8d7da;
+        border: 1px solid #bee5eb;
+    }
+    .info-text.pending{
+        display: block;
+        color: #0c5460;
+        background: #d1ecf1;
+        border: 1px solid #bee5eb;
+    }
+    .container .weather-part{
+        margin: 30px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .weather-part img{
+        max-width: 125px;
+    }
+    .weather-part .temp{
+        display: flex;
+        font-size: 55px;
+        font-weight: 400;
+    }
+    .weather-part .temp .numb{
+        font-weight: 600;
+    }
+    .weather-part .temp .deg{
+        font-size: 40px;
+        margin: 10px 5px 0 0 ;
+        display: block;
+    }
+    .weather-part .location{
+        display: flex;
+        align-items: center;
+        font-size: 21px;
+        margin-bottom: 30px;
+    }
+    .location i{
+        font-size: 22px;
+        margin-right: 5px;
+    }
+    .weather-part .bottom-details{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #bfbfbf;
+    }
+    .bottom-details .column{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .column i{
+        color: #43affc;
+        font-size: 40px;
+    }
+    .column.humidity{
+        border-left: 1px solid #bfbfbf;
+    }
+    .details .temp, .humidity span{
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: -3px;
+    }
+    .details .temp .deg{
+        margin: 0;
+        font-size: 17px;
+        pad: 0 2px 0 1px;
+    }
+    .details p{
+        font-size: 14px;
+        margin-top: -6px;
+    }
+    .copy{
+        position: absolute;
+        bottom: 10px;
+    }
+</style>
+<script>
+    const wrapper = document.querySelector(".container"),
+    inputPart = wrapper.querySelector(".input-part"),
+    infoText = inputPart.querySelector(".info-text"),
+    inputField = inputPart.querySelector("input"),
+    locationbtn = document.querySelector("button");
+    let api;
+    city = document.querySelector("input").value;
+    inputField.addEventListener("keyup", e =>{
+        if(e.key == "Enter" && inputField.value != ""){
+            RequestApi(inputField.value);
+        }
+    });
+    locationbtn.addEventListener("click", ()=>{
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(onSuccess , onError);
+        }
+        else{
+            alert("Your Browser Don't Support Geloaction")
+        }
+    });
+
+    function onSuccess(position){
+        const {latitude, longitude} = position.coords;
+        api = 'https://api.openweathermap.org/data/2.5/weather?lat='+{latitude}+'&lon='+{longitude}+'&units=metric&appid=cc7be63e026943c05d10df0e820d4e3d';
+        fetchData();
+    }
+
+    function onError(error){
+        infoText.innerText = error.message;
+        infoText.classList.add("error");
+    }
+    function RequestApi(city){
+        api = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=metric&appid=cc7be63e026943c05d10df0e820d4e3d';
+        fetchData();
+    }
+    function fetchData(){
+        infoText.innerText = "Getting Weather Data..."
+        infoText.classList.add("pending")
+        fetch(api).then(response => response.json()).then(result => weatherDetails(result));
+    }
+    function weatherDetails(info){
+        infoText.classList.replace("pending","error");
+        if(info.cod == "404"){
+            infoText.innerText = `That isn't a valid city`;
+        }
+        else{
+            const city = info.name;
+            var country = info.sys.country;
+            const {description, id} = info.weather[0];
+            const {feels_like, humidity, temp} = info.main;
+
+            wrapper.querySelector(".temp .numb").innerText = Math.floor(temp);
+            wrapper.querySelector(".weather").innerText = description;
+            wrapper.querySelector(".location span").innerText = city+',';
+            wrapper.querySelector(".location p").innerText = country;
+            wrapper.querySelector(".temp .numb").innerText = temp;
+            wrapper.querySelector(".temp .numb-2").innerText = Math.floor(feels_like);
+            wrapper.querySelector(".humidity span").innerText = humidity+'%';
+            infoText.classList.remove("pending","error");
+        }
+    }
+</script>
+
